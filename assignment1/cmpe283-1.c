@@ -31,7 +31,7 @@ struct capability_info {
 
 struct custom_msr_info {
 	int address;
-	struct capability_info info;
+	struct capability_info *info;
 	int num_of_controls;
 	char *msg;
 };
