@@ -29,7 +29,7 @@ struct capability_info {
 	const char *name;
 };
 
-struct msr_info {
+struct custom_msr_info {
 	int address;
 	struct capability_info info;
 	int num_of_controls;
@@ -94,7 +94,7 @@ detect_vmx_features(void)
 {
 	int i = 0;
 	uint32_t lo, hight;
-	struct msr_info array[1] = {
+	struct custom_msr_info array[1] = {
 		{IA32_VMX_PINBASED_CTLS, pinbased, 5, "Pinbased Controls MSR: "}
 	};
 
