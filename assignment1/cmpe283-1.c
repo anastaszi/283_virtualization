@@ -100,11 +100,11 @@ detect_vmx_features(void)
 
 	/* Pinbased controls */
 	while (i < 1) {
-		rdmsr(msr_info[i].address, lo, hi);
-		printk("%s", msr_info[i].msg);
+		rdmsr(array[i].address, lo, hi);
+		printk("%s", array[i].msg);
 		pr_info("0x%llx\n",
 			(uint64_t)(lo | (uint64_t)hi << 32));
-		report_capability(msr_info[i].info, msr_info[i].num_of_controls, lo, hi);
+		report_capability(array[i].info, array[i].num_of_controls, lo, hi);
 		i++;
 	}
 	//rdmsr(IA32_VMX_PINBASED_CTLS, lo, hi);
