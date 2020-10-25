@@ -93,7 +93,7 @@ void
 detect_vmx_features(void)
 {
 	int i = 0;
-	uint32_t lo, hight;
+	uint32_t lo, hi;
 	struct custom_msr_info array[1] = {
 		{IA32_VMX_PINBASED_CTLS, pinbased, 5, "Pinbased Controls MSR: "}
 	};
