@@ -11,3 +11,15 @@
 In VM’s terminal check if it can manage virtualization \
 Run `cat /proc/cpuinfo | more` 
 ![VMX](https://github.com/anastaszi/283_virtualization/blob/master/assignment1/imgs/vmx.png)
+6. Intall modules: make, gcc
+```
+sudo apt install gcc
+sudo apt install make
+```
+7. Create a directory and copy there 2 files (Makefile and cmpe283-1.c) or git clone the repository and go the cloned folder
+8. Compile and then execute kernel module
+```
+make all
+sudo insmod .
+
+```
