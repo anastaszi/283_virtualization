@@ -16,10 +16,10 @@ Run `cat /proc/cpuinfo | more`
 sudo apt install gcc
 sudo apt install make
 ```
-7. Create a directory and copy there 2 files (Makefile and cmpe283-1.c) or git clone the repository and go the cloned folder
+7. Create a directory and copy there 2 files (Makefile and cmpe283-1.c) or git clone the repository and go the cloned directory
 8. Compile and then execute kernel module
 ```
 make all
-sudo insmod .
-
+sudo insmod ./cmpe283-1.ko
 ```
+9. Check the result by running `dmesg`
