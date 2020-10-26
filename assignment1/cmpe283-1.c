@@ -200,16 +200,20 @@ detect_vmx_features(void)
 	int i = 0;
 	uint32_t lo, hi;
 	int secondary_is_available = 0;
+	
 	struct custom_msr_info array[NUMBER_OF_MSRS] = {
 		/* Pinbased controls */
 		{IA32_VMX_PINBASED_CTLS, pinbased, 5, "Pinbased Controls MSR: "},
+		/* Processor-Based controls */
 		{IA32_VMX_PROCBASED_CTLS, procbased, 21, "Processor-Based Controls MSR: "},
+		/* Secondary Processor-Based controls */
 		{IA32_VMX_PROCBASED_CTLS2, sec_procbased, 27, "Secondary Processor-Based MSR: "},
+		/* Exit controls */
 		{IA32_VMX_EXIT_CTLS, exit_controls, 14, "Exit Controls MSR: "},
+		/* Entry controls */
 		{IA32_VMX_ENTRY_CTLS, entry_controls, 12, "Entry Controls MSR: "}
 	};
 
-	/* Pinbased controls */
 	while (i < NUMBER_OF_MSRS) {
 		if ((array[i].address != IA32_VMX_PROCBASED_CTLS2)  || (array[i].address == IA32_VMX_PROCBASED_CTLS2 && secondary_is_available))
 		{
@@ -225,10 +229,6 @@ detect_vmx_features(void)
 		}
 		i++;
 	}
-	//rdmsr(IA32_VMX_PINBASED_CTLS, lo, hi);
-	//pr_info("Pinbased Controls MSR: 0x%llx\n",
-	//	(uint64_t)(lo | (uint64_t)hi << 32));
-	//report_capability(pinbased, 5, lo, hi);
 }
 
 /*
