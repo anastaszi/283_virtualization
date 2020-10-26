@@ -199,6 +199,7 @@ detect_vmx_features(void)
 {
 	int i = 0;
 	uint32_t lo, hi;
+	int secondary_is_available = 0;
 	struct custom_msr_info array[NUMBER_OF_MSRS] = {
 		/* Pinbased controls */
 		{IA32_VMX_PINBASED_CTLS, pinbased, 5, "Pinbased Controls MSR: "},
@@ -210,11 +211,18 @@ detect_vmx_features(void)
 
 	/* Pinbased controls */
 	while (i < NUMBER_OF_MSRS) {
-		rdmsr(array[i].address, lo, hi);
-		//printk("%s", array[i].msg);
-		pr_info("%s0x%llx\n",array[i].msg,
-			(uint64_t)(lo | (uint64_t)hi << 32));
-		report_capability(array[i].info, array[i].num_of_controls, lo, hi);
+		if ((array[i].address != IA32_VMX_PROCBASED_CTLS2)  || (array[i].address == IA32_VMX_PROCBASED_CTLS2 && secondary_is_available))
+		{
+				rdmsr(array[i].address, lo, hi);
+				pr_info("%s0x%llx\n",array[i].msg,
+					(uint64_t)(lo | (uint64_t)hi << 32));
+				report_capability(array[i].info, array[i].num_of_controls, lo, hi);
+				if (array[i].address == IA32_VMX_PROCBASED_CTLS)
+					secondary_is_available = (hi & (1 << (63 - 32)));
+		}
+		else {
+			printk("Secondary Processor-Based MSR are UNAVAILABLE!");
+		}
 		i++;
 	}
 	//rdmsr(IA32_VMX_PINBASED_CTLS, lo, hi);
