@@ -22,7 +22,7 @@ sudo apt install make
 make all
 sudo insmod ./cmpe283-1.ko
 ```
-9. Check the result by running `dmesg`
+9. Check the result by running `dmesg` \
 Sample output:
 ![Pinbased](https://github.com/anastaszi/283_virtualization/blob/master/assignment1/imgs/pinbased.png)
 ![Secondary](https://github.com/anastaszi/283_virtualization/blob/master/assignment1/imgs/secondary.png)
