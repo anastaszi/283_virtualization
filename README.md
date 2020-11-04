@@ -20,7 +20,7 @@
   * Update its settings: more CPUs and add extra disk.
   * Connect to it using ssh
   * Check nested virtualization is enabled: `cat /proc/cpuinfo | grep vmx`
-1. Mount additional disk to the VM (int the vm terminal) (optional):
+3. Mount additional disk to the VM (int the vm terminal) (optional):
 ```
   sudo lsblk [it'll show info about available disk and the one you need to mount]
   sudo mkfs.ext4 -m 0 -E lazy_itable_init=0,lazy_journal_init=0,discard /dev/sdb [format the disk]
@@ -32,7 +32,7 @@
   sudo blkid -s UUID -o value /dev/sdb` /mnt/disks/dir ext4 discard,defaults,nofail 0 2 | sudo tee -a /etc/fstab [add info about the dist]
   ```
   * than check that it's mounted `cat /etc/fstab`
-1. Generate and add ssh key for your github account
+4. Generate and add ssh key for your github account
   ``` 
   ssh-keygen -t rsa -b 4096 -C "your_email@example.com" 
   eval "$(ssh-agent -s)"
@@ -40,8 +40,8 @@
   cat < ~/.ssh/id_rsa.pub
   ```
   and copy ssh-key and then add it your github account (Settings => SSH and GPG keys => New SSH key)
- 1. Clone previously forked linux repository: `git clone git@github.com:YOUR_NAME/linux.git`
- 1. Build the Kernel (in the linux folder!)
+5. Clone previously forked linux repository: `git clone git@github.com:YOUR_NAME/linux.git`
+1. Build the Kernel (in the linux folder!)
   * `sudo bash`
   * `apt-get install build-essential fakeroot libncurses5-dev libssl-dev ccache bison flex libelf-dev dwarves`
   * check your kernel version with `uname -a` \
@@ -51,8 +51,15 @@ Linux anastasia-nested-vm 5.8.0-1008-gcp #8-Ubuntu SMP Thu Oct 15 12:48:27 UTC 2
   * run `make oldconfig` (press Enter for all questions)
   * build it `make && make modules && make install && make modules_install`
   * reboot
- 1. Verify that the kernel is updated: `uname -a` \ 
+7. Verify that the kernel is updated: `uname -a` \ 
  ( output should  look like: `Linux anastasia-nested-vm 5.10.0-rc2+ #4 SMP Wed Nov 4 01:56:19 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux`)
+8. Update the VM instance and install some necessary packages to run nested VM and download Ubuntu image for the nested VM
+```
+sudo apt update && sudo apt install qemu-kvm -y
+sudo apt install virt-manager
+wget http://releases.ubuntu.com/20.04/ubuntu-20.04.1-desktop-amd64.iso
+```
+9. 
  
  ### Research
  - The main goal of the assigment was to calculate exits from the VM and time spent processing them in the VMM. \
