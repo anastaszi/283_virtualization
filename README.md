@@ -55,9 +55,11 @@ Linux anastasia-nested-vm 5.8.0-1008-gcp #8-Ubuntu SMP Thu Oct 15 12:48:27 UTC 2
  ( output should  look like: `Linux anastasia-nested-vm 5.10.0-rc2+ #4 SMP Wed Nov 4 01:56:19 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux`)
 8. Update the VM instance and install some necessary packages to run nested VM and download Ubuntu image for the nested VM
 ```
-sudo apt update && sudo apt install qemu-kvm -y
-sudo apt install virt-manager
+sudo apt-get install virt-manager
 wget http://releases.ubuntu.com/20.04/ubuntu-20.04.1-desktop-amd64.iso
+sudo virt-install --name ubuntu --vcpus=2 --os-type=Linux --disk path=/new,siz
+e=20 --os-variant=ubuntu20.04 --location=ubuntu-20.04.1-desktop-amd64.iso  --network network=default --graphics=vnc
+ -v
 ```
 9. 
  
