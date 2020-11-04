@@ -3,7 +3,7 @@
 1. Create a VM with enabled nested virtualization
   * Open Gcloud Terminal
   * run `gcloud compute images list --show-deprecate` that will output all possible images 
-  * To create a custom image choose the OS from above and run `gcloud compute images create nested-vm-anastasia-2004-focal --source-image=ubuntu-2004-focal-v20201028 --source-image-project=ubuntu-os-cloud --licenses="https://www.googleapis.com/compute/v1/projects/vm-options/global/licenses/enable-vmx"`
+  * To create a custom image choose the OS from above and run `gcloud compute images create nested-vm-anastasia-2004-focal --source-image=ubuntu-2004-focal-v20201028 --source-image-project=ubuntu-os-cloud --boot-disk-size=200GB --licenses="https://www.googleapis.com/compute/v1/projects/vm-options/global/licenses/enable-vmx"`
   * To create a VM from that image run `gcloud compute instances create nested-vm-ubuntu --zone us-central1-b --image nested-vm-anastasia-2004-focal`
   * After creation it will appear in the list of your VMs. Stop it.
   * Update its settings: more CPUs and add extra disk.
