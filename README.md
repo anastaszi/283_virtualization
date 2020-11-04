@@ -38,7 +38,7 @@
  1. Verify that the kernel is updated: `uname -a`
  
  ### Research
- - The main goal of the assigment was to calculate exits from the VM and time spent processing them in the VMM. \ 
+ - The main goal of the assigment was to calculate exits from the VM and time spent processing them in the VMM. \
  To calculate exits we need to add data structure to hold exits to vmx.c , update it everytime when the exit occurs (vmx_handle_exit function) and then put in into %eax register while emulating cpuid (kvm_emulate_cpuid function in cpuid.c )
   
   
