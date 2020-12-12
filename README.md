@@ -69,11 +69,7 @@ sudo virsh destroy [nameOfVM] //stop the VM with the specified name
 sudo virsh undefine [nameOfVm] // delete VM
 sudo virsh domifaddr [nameOfVM] // get address/port to connect to the vm
 ```
-10. Set ssh to connect 
-```
-sudo apt install libnss-libvirt
-```
-check that host can ping nested vm
+10. Check that host can ping nested vm
 ```
 sudo ping -c 2 [nameOfVM]
 
