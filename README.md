@@ -62,7 +62,14 @@ buntu18.img,size=8 --vcpus 1 --virt-type kvm --os-type linux --os-variant ubuntu
 ttp://archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/' --extra-args "console=tty0 console=ttyS0,115200
 n8"
 ```
-9. 
+9. VMs manipulations:
+```
+sudo virsh list --all // list all VMs
+sudo virsh start [nameOfVM] // start the VM with the specified name
+sudo virsh destroy [nameOfVM] //stop the VM with the specified name
+sudo virsh undefine [nameOfVm] // delete VM
+sudo virsh domifaddr [nameOfVM] // get address/port to connect to the vm
+```
  
  ### Research
  - The main goal of the assigment was to calculate exits from the VM and time spent processing them in the VMM. \
