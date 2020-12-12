@@ -55,13 +55,12 @@ Linux anastasia-nested-vm 5.8.0-1008-gcp #8-Ubuntu SMP Thu Oct 15 12:48:27 UTC 2
  ( output should  look like: `Linux anastasia-nested-vm 5.10.0-rc2+ #4 SMP Wed Nov 4 01:56:19 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux`)
 8. Update the VM instance and install some necessary packages to run nested VM and download Ubuntu image for the nested VM
 ```
-sudo apt-get install virt-manager
+sudo apt-get install virt-manager 
 wget http://releases.ubuntu.com/20.04/ubuntu-20.04.1-desktop-amd64.iso
-sudo virt-install --name ubuntu18 --ram 1024 --disk path=/var/lib/libvirt/images/u
-buntu18.img,size=8 --vcpus 1 --virt-type kvm --os-type linux --os-variant ubuntu18.04 --graphics none --location 'h
-ttp://archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/' --extra-args "console=tty0 console=ttyS0,115200
-n8"
+sudo virt-install --name zimavm --ram 1024 --disk path=/var/lib/libvirt/images/zimavm.img,size=8 --vcpus 1 --virt-type kvm --os-type l
+inux --os-variant ubuntu18.04 --graphics none --location 'http://archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/' --extra-args "console=tty0 console=ttyS0,115200n8"
 ```
+While installation make sure to choose OpenSSH when it prompts for additional software to install.
 9. VMs manipulations:
 ```
 sudo virsh list --all // list all VMs
@@ -77,6 +76,7 @@ sudo apt install libnss-libvirt
 check that host can ping nested vm
 ```
 sudo ping -c 2 [nameOfVM]
+
 ```
  
  ### Research
