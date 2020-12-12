@@ -74,6 +74,10 @@ sudo virsh domifaddr [nameOfVM] // get address/port to connect to the vm
 ```
 sudo apt install libnss-libvirt
 ```
+check that host can ping nested vm
+```
+sudo ping -c 2 [nameOfVM]
+```
  
  ### Research
  - The main goal of the assigment was to calculate exits from the VM and time spent processing them in the VMM. \
