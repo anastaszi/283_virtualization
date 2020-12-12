@@ -57,9 +57,9 @@ Linux anastasia-nested-vm 5.8.0-1008-gcp #8-Ubuntu SMP Thu Oct 15 12:48:27 UTC 2
 ```
 sudo apt-get install virt-manager
 wget http://releases.ubuntu.com/20.04/ubuntu-20.04.1-desktop-amd64.iso
-sudo virt-install --name ubuntu --vcpus=2 --os-type=Linux --disk path=/new,siz
-e=20 --os-variant=ubuntu20.04 --location=ubuntu-20.04.1-desktop-amd64.iso  --network network=default --graphics=vnc
- -v
+sudo virt-install --name ubuntu1404 --ram 1024 --disk path=./ubuntu1404.qcow2,size
+=8 --vcpus 1 --os-type linux --os-variant generic --graphics none --console pty,target_type=serial --location 'http
+://archive.ubuntu.com/ubuntu/dists/trusty/main/installer-amd64/'
 ```
 9. 
  
