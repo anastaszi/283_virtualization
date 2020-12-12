@@ -70,6 +70,10 @@ sudo virsh destroy [nameOfVM] //stop the VM with the specified name
 sudo virsh undefine [nameOfVm] // delete VM
 sudo virsh domifaddr [nameOfVM] // get address/port to connect to the vm
 ```
+10. Set ssh to connect 
+```
+sudo apt install libnss-libvirt
+```
  
  ### Research
  - The main goal of the assigment was to calculate exits from the VM and time spent processing them in the VMM. \
