@@ -74,12 +74,27 @@ sudo virsh domifaddr [nameOfVM] // get address/port to connect to the vm
 sudo ping -c 2 [nameOfVM]
 
 ```
- 
  ### Research
  - The main goal of the assigment was to calculate exits from the VM and time spent processing them in the VMM. \
  To calculate exits we need to add data structure to hold exits to vmx.c , update it everytime when the exit occurs (vmx_handle_exit function) and then put in into %eax register while emulating cpuid (kvm_emulate_cpuid function in cpuid.c )
   
-  
+ ### Test file
+ ```
+ #include <stdio.h>
+#include <cpuid.h>
+#include <linux/module.h>     /* Needed by all modules */
+#include <linux/kernel.h>
+int main()
+{
+    __uint64_t a = 0x4FFFFFFF;
+    __uint64_t  b, c, d;
+    __asm__ __volatile__("mov $0x4FFFFFFF, %eax\n\t");
+    __asm__ __volatile__("cpuid" 
+                   :"=a"(a), "=b"(b), "=c"(c), "=d"(d)
+                   );
+    printf("CPUID(0x4FFFFFFF)   Total Exits= %ld\t",a);
+}
+ ```
   
   Resources:
   - [How to enable nested virtualization of Google Cloud](https://www.cloudkb.net/how-to-enable-nested-virtualization-on-google-cloud/)
