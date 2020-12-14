@@ -95,6 +95,17 @@ int main()
     printf("CPUID(0x4FFFFFFF)   Total Exits= %ld\t",a);
 }
  ```
+ 
+ ## Assignment 4
+ 
+ Using gcloud enviroment we weren't able to see any difference between nested paging and shadow paging.
+ After running all the instructions from assignment from assignment 3 (update the kernel, start an inner VM, run the test code inside the inner VM, exit from the inner VM, dmesg) 
+ ![beforeep0](https://github.com/anastaszi/283_virtualization/blob/master/imgs/beforeep0.png)
+ those commands were run: 
+ 
+ 
+ 
+ 
   
   Resources:
   - [How to enable nested virtualization of Google Cloud](https://www.cloudkb.net/how-to-enable-nested-virtualization-on-google-cloud/)
